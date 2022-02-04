@@ -1,0 +1,117 @@
+.wrapper {
+    width: 500px;
+    height: 350px;
+    color: #e9e9e9;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.front, .back {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, #e91b1b, #3434a5);
+    padding: 40px;
+    position: absolute;
+    border-radius: 15px;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+.mastercard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upper-text {
+    font-size: small;
+    margin-bottom: 10px;
+}
+
+.lower-text {
+    margin-bottom: 20px;
+}
+
+.chip {
+    margin-left: -25px;
+    margin-bottom: 20px;
+}
+
+.card-no {
+    letter-spacing: 4px;
+}
+
+.bar {
+    background-color: #000;
+    width: calc(100% + 80px);
+    height: 60px;
+    margin-left: -40px;
+}
+
+.pattern {
+    width: calc(100% + 80px);
+    height: 50px;
+    margin-left: -40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.big-pattern {
+    background-image: url("../assets/pattern.png");
+    width: 60%;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.big-pattern p {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: large;
+}
+
+.small-pattern {
+    background-image: url("../assets/pattern.png");
+    width: 20%;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.words {
+    font-size: small;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.wrapper:hover .card {
+    transform: rotateY(-180deg);
+}
