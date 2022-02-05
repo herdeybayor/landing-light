@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Row from "../components/Row";
 import visa from "../assets/visa.png";
 import discover from "../assets/discover.png";
@@ -8,6 +8,47 @@ import CheckoutForm from "../components/CheckoutForm";
 import Hr from "../components/Hr";
 
 function Landing() {
+  const [formData, setFormData] = useState({
+    card_number: "1111 2222 3333 4444",
+    expiration_date: "DD/MM",
+    security_code: "123",
+    postal_code: "12345",
+  });
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData((prevValue) => {
+      if (name === "card-number") {
+        return {
+          card_number: value,
+          expiration_date: prevValue.expiration_date,
+          security_code: prevValue.security_code,
+          postal_code: prevValue.postal_code,
+        };
+      } else if (name === "expiration-date") {
+        return {
+          card_number: prevValue.card_number,
+          expiration_date: value,
+          security_code: prevValue.security_code,
+          postal_code: prevValue.postal_code,
+        };
+      } else if (name === "security-code") {
+        return {
+          card_number: prevValue.card_number,
+          expiration_date: prevValue.expiration_date,
+          security_code: value,
+          postal_code: prevValue.postal_code,
+        };
+      } else if (name === "postal-code") {
+        return {
+          card_number: prevValue.card_number,
+          expiration_date: prevValue.expiration_date,
+          security_code: prevValue.security_code,
+          postal_code: value,
+        };
+      }
+    });
+  }
   return (
     <div className="flex flex-col mt-20 px-12">
       <Hr />
@@ -29,8 +70,16 @@ function Landing() {
         </ul>
       </Row>
       <Row>
-        <VirtualCard />
-        <CheckoutForm />
+        <VirtualCard
+          cardNumber={formData.card_number}
+          date={formData.expiration_date}
+          cvv={formData.security_code}
+        />
+        <CheckoutForm
+          change={(e) => {
+            handleChange(e);
+          }}
+        />
       </Row>
       <Hr />
       <Row>

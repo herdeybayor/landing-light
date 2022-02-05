@@ -11,6 +11,8 @@ function InputGroup(props) {
         type={props.type}
         name={props.name}
         id={props.name}
+        placeholder={props.placeholder}
+        onChange={props.change}
       />
     </div>
   );
